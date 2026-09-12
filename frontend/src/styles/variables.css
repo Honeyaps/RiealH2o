@@ -1,0 +1,77 @@
+/* ============================================================
+   RIEAL H2O - Design tokens
+   ============================================================ */
+:root {
+  /* Brand palette */
+  --color-navy: #062B66;
+  --color-navy-2: #0A3B87;
+  --color-royal: #087FEF;
+  --color-royal-2: #0F63C2;
+  --color-sky: #4FB0FF;
+  --color-blue-50: #F4FBFF;
+  --color-blue-100: #DFF3FF;
+  --color-blue-200: #C7E8FF;
+  --color-white: #FFFFFF;
+
+  /* Ink / text */
+  --color-ink: #0A1A2F;
+  --color-ink-2: #1F3350;
+  --color-muted: #55688A;
+  --color-muted-2: #7B8CAA;
+
+  /* Support */
+  --color-border: #E4EEF9;
+  --color-border-2: #D1E2F4;
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+
+  /* Gradients */
+  --gradient-hero: radial-gradient(1200px 700px at 65% 20%, #BFE3FF 0%, #E7F5FF 45%, #F4FBFF 100%);
+  --gradient-navy: linear-gradient(135deg, #062B66 0%, #0A3B87 100%);
+  --gradient-royal: linear-gradient(135deg, #087FEF 0%, #0F63C2 100%);
+  --gradient-soft: linear-gradient(180deg, #FFFFFF 0%, #F4FBFF 100%);
+
+  /* Typography */
+  --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  /* Type scale (fluid) */
+  --fs-xs: clamp(0.72rem, 0.7rem + 0.15vw, 0.78rem);
+  --fs-sm: clamp(0.84rem, 0.8rem + 0.2vw, 0.9rem);
+  --fs-base: clamp(0.95rem, 0.9rem + 0.25vw, 1rem);
+  --fs-lg: clamp(1.05rem, 1rem + 0.35vw, 1.15rem);
+  --fs-xl: clamp(1.2rem, 1.1rem + 0.5vw, 1.35rem);
+  --fs-2xl: clamp(1.6rem, 1.4rem + 1vw, 2rem);
+  --fs-3xl: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+  --fs-4xl: clamp(2.6rem, 2rem + 2.5vw, 3.75rem);
+  --fs-hero: clamp(2.75rem, 2rem + 4vw, 5rem);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(6, 43, 102, 0.06);
+  --shadow-sm: 0 2px 6px rgba(6, 43, 102, 0.06), 0 1px 2px rgba(6, 43, 102, 0.04);
+  --shadow-md: 0 8px 24px rgba(6, 43, 102, 0.08), 0 2px 6px rgba(6, 43, 102, 0.05);
+  --shadow-lg: 0 18px 48px rgba(6, 43, 102, 0.12), 0 6px 16px rgba(6, 43, 102, 0.06);
+  --shadow-xl: 0 32px 80px rgba(6, 43, 102, 0.18);
+  --shadow-royal: 0 14px 34px rgba(8, 127, 239, 0.35);
+
+  /* Layout */
+  --container-max: 1240px;
+  --container-px: clamp(1rem, 2.5vw, 2rem);
+  --section-py: clamp(4rem, 3rem + 4vw, 7rem);
+  --nav-h: 76px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-med: 320ms;
+  --dur-slow: 600ms;
+}

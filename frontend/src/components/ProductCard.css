@@ -1,0 +1,107 @@
+.product-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 22px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: inherit;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out),
+              border-color var(--dur-med) var(--ease-out);
+}
+
+/* Soft accent glow — moves on hover */
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: auto -30% -60% auto;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(8,127,239,0.14) 0%, transparent 65%);
+  z-index: -1;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-2);
+  color: inherit;
+}
+.product-card:hover::before {
+  transform: translate(-20%, -20%);
+}
+
+/* Photo tile — bg comes from product.tileBg (matches the image bg so no seam
+   shows between photo & tile). */
+.product-card__visual {
+  position: relative;
+  width: 92px;
+  height: 120px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(6, 43, 102, 0.05),
+              0 4px 12px rgba(6, 43, 102, 0.06);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.product-card:hover .product-card__visual {
+  transform: translateY(-2px);
+}
+
+.product-card__img {
+  max-width: 88%;
+  max-height: 92%;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--dur-med) var(--ease-out);
+  will-change: transform;
+}
+.product-card:hover .product-card__img {
+  transform: scale(1.06);
+}
+
+/* --- Body --- */
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.product-card__title {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  letter-spacing: -0.01em;
+}
+
+.product-card__text {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+.product-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-royal);
+  transition: gap var(--dur-fast) var(--ease-out);
+}
+.product-card:hover .product-card__cta { gap: 8px; }
+
+@media (max-width: 520px) {
+  .product-card__visual { width: 84px; height: 110px; }
+}

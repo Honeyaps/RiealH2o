@@ -1,0 +1,60 @@
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 18px 20px;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.feature__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  color: var(--color-royal);
+  background: transparent;
+  transition: transform var(--dur-med) var(--ease-out),
+              background var(--dur-med) var(--ease-out),
+              color var(--dur-med) var(--ease-out);
+}
+
+.feature__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.feature__text {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  max-width: 22ch;
+  line-height: 1.55;
+}
+
+/* Minimal variant (used under hero) */
+.feature--minimal {}
+
+/* Card variant (used on About / Why pages) */
+.feature--card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+}
+.feature--card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.feature--card:hover .feature__icon {
+  background: var(--color-blue-100);
+  transform: scale(1.05) rotate(-4deg);
+}
+
+.feature:hover .feature__icon {
+  transform: scale(1.1);
+}

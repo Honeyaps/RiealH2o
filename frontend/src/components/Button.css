@@ -1,0 +1,101 @@
+.btn {
+  --btn-bg: var(--gradient-royal);
+  --btn-fg: #fff;
+  --btn-shadow: var(--shadow-royal);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: -0.005em;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  box-shadow: var(--btn-shadow);
+  cursor: pointer;
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out),
+              filter var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform var(--dur-slow) var(--ease-out);
+  z-index: -1;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 44px rgba(8, 127, 239, 0.4);
+}
+.btn:hover::before { transform: translateX(100%); }
+.btn:active { transform: translateY(0); }
+
+.btn__icon {
+  display: inline-flex;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.btn:hover .btn__icon { transform: translateX(4px); }
+
+/* Sizes */
+.btn--sm { padding: 10px 20px; font-size: 0.88rem; }
+.btn--lg { padding: 16px 34px; font-size: 1.05rem; }
+
+/* Variants */
+.btn--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-navy);
+  --btn-shadow: none;
+  border: 1.5px solid var(--color-border-2);
+}
+.btn--secondary:hover {
+  border-color: var(--color-royal);
+  color: var(--color-royal);
+  box-shadow: 0 8px 22px rgba(8, 127, 239, 0.15);
+}
+
+.btn--outline {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-royal);
+  --btn-shadow: none;
+  border: 1.5px solid var(--color-royal);
+}
+.btn--outline:hover {
+  background: var(--color-royal);
+  color: #fff;
+  box-shadow: var(--shadow-royal);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-navy);
+  --btn-shadow: none;
+  padding-inline: 12px;
+}
+.btn--ghost:hover {
+  color: var(--color-royal);
+  box-shadow: none;
+  transform: none;
+}
+.btn--ghost::before { display: none; }
+
+/* Disabled */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  filter: saturate(0.85);
+}

@@ -1,0 +1,56 @@
+.pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 28px 22px;
+  border-radius: var(--radius-lg);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.pillar__icon-wrap {
+  position: relative;
+  width: 84px; height: 84px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-royal);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.pillar__icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border-2);
+  background: linear-gradient(180deg, #fff 0%, var(--color-blue-50) 100%);
+  transition: border-color var(--dur-med) var(--ease-out),
+              transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out);
+  z-index: -1;
+}
+.pillar:hover .pillar__icon-wrap { transform: translateY(-4px); }
+.pillar:hover .pillar__icon-ring {
+  border-color: var(--color-royal);
+  box-shadow: 0 12px 30px rgba(8, 127, 239, 0.22);
+  transform: scale(1.05);
+}
+
+.pillar__title {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  max-width: 14ch;
+}
+
+.pillar__text {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  max-width: 24ch;
+  line-height: 1.55;
+}
+
+/* Compact pillar for the Home "Purity You Can Trust" row */
+.pillar--compact { padding: 14px 12px; }
+.pillar--compact .pillar__icon-wrap { width: 68px; height: 68px; }

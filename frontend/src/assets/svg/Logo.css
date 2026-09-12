@@ -1,0 +1,25 @@
+.brand-logo {
+  display: block;
+  object-fit: contain;
+}
+
+/* Light background — image renders as-is. Consumer styles (.navbar__logo, etc.)
+   control the height. */
+.brand-logo--light {}
+
+/* Dark background — wrap in a white pill so the brand colours stay true.
+   Consumer sets the outer height via its class (.footer__logo). */
+.brand-logo--dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+.brand-logo--dark img {
+  display: block;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
