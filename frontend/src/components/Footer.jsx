@@ -35,7 +35,7 @@ export default function Footer() {
               hygiene and freshness in every drop.
             </p>
 
-            <ul className="footer__social" aria-label="Social">
+            {/* <ul className="footer__social" aria-label="Social">
               {siteConfig.social.map(({ name, href }) => {
                 const Icon = SOCIAL_ICONS[name] || Instagram;
                 return (
@@ -51,7 +51,7 @@ export default function Footer() {
                   </li>
                 );
               })}
-            </ul>
+            </ul> */}
           </div>
 
           <div className="footer__col">

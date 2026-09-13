@@ -26,7 +26,7 @@ export const siteConfig = {
   },
 
   contact: {
-    email: import.meta.env.VITE_CONTACT_EMAIL || 'hello@rieal-h2o.example',
+    email: import.meta.env.VITE_CONTACT_EMAIL || 'rieal-h2o@gmail.com',
     phone: import.meta.env.VITE_CONTACT_PHONE || '+91 00000 00000',
     address:
       import.meta.env.VITE_CONTACT_ADDRESS ||

@@ -458,6 +458,206 @@
 }
 
 /* ============================================================
+   FACTS TICKER (Marquee)
+   ============================================================ */
+.facts-ticker {
+  padding-block: 32px;
+  background: var(--color-blue-50);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+}
+
+/* ============================================================
+   IMPACT COUNTERS
+   ============================================================ */
+.impact__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.impact__grid > * > .animated-counter {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out);
+}
+.impact__grid > * > .animated-counter:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 900px) {
+  .impact__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .impact__grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   INTERACTIVE RIPPLE
+   ============================================================ */
+.ripple-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.ripple-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ripple-section__text {
+  color: var(--color-muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 56ch;
+}
+.ripple-section__interactive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .ripple-section__grid { grid-template-columns: 1fr; gap: 40px; }
+  .ripple-section__interactive { order: -1; }
+}
+
+/* ============================================================
+   BODY WATER — Hydration Science Rings
+   ============================================================ */
+.body-water__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 28px;
+  margin-bottom: 4px;
+}
+.body-water__hero-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 2rem + 4vw, 5rem);
+  background: var(--gradient-royal);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.body-water__hero-label {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.body-water__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+/* Individual ring card */
+.hydra-ring {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 20px 22px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--dur-med) var(--ease-out),
+              box-shadow var(--dur-med) var(--ease-out);
+}
+.hydra-ring:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+.hydra-ring:hover .hydra-ring__fill {
+  filter: drop-shadow(0 0 8px rgba(8, 127, 239, 0.4));
+}
+
+.hydra-ring__wrap {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.hydra-ring__svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.hydra-ring__track {
+  fill: none;
+  stroke: var(--color-blue-100);
+  stroke-width: 10;
+}
+
+.hydra-ring__fill {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+              filter var(--dur-med) var(--ease-out);
+}
+
+.hydra-ring__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hydra-ring__pct {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.65rem;
+  line-height: 1;
+}
+.hydra-ring__pct-sign {
+  font-size: 0.6em;
+  font-weight: 700;
+}
+
+.hydra-ring__organ {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--color-navy);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.hydra-ring__desc {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .body-water__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .body-water__grid { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
+}
+
+/* ============================================================
    HERO responsive
    ============================================================ */
 @media (max-width: 900px) {

@@ -1,9 +1,11 @@
-import { Check, Droplets, ShieldCheck, HeartHandshake, Leaf } from 'lucide-react';
+import { Check, Droplets, ShieldCheck, HeartHandshake, Leaf, Target, Award, Users } from 'lucide-react';
 
 import Button from '../components/Button';
 import SectionHeading from '../components/SectionHeading';
 import FeatureCard from '../components/FeatureCard';
 import Reveal from '../components/Reveal';
+import AnimatedCounter from '../components/AnimatedCounter';
+import Accordion from '../components/Accordion';
 
 import Bottle from '../assets/svg/Bottle';
 import HeroScene from '../assets/svg/HeroScene';
@@ -29,6 +31,21 @@ const promises = [
   'Hygienic, sealed packaging',
   'Consistent taste in every bottle',
   'Responsibly-sourced materials',
+];
+
+const milestones = [
+  { year: '2024', title: 'The Vision', text: 'RIEAL H2O was conceived with a single mission — to make pure, safe drinking water accessible to every household.' },
+  { year: '2024', title: 'First Facility', text: 'Our first advanced purification facility was set up with state-of-the-art RO, UV and ozonisation technology.' },
+  { year: '2025', title: 'Product Launch', text: 'RIEAL H2O officially launched with four pack sizes — 100 ml, 1 Litre, 2 Litre and the 20 Litre Jar.' },
+  { year: '2025', title: 'Growing Together', text: 'Expanding our reach to homes, offices and events across the region with a focus on reliability and trust.' },
+];
+
+const aboutFaq = [
+  { question: 'Where does RIEAL H2O source its water?', answer: 'We source water from carefully selected natural sources, chosen for their inherent purity. The exact location is protected to ensure continued quality and sustainability.' },
+  { question: 'Is RIEAL H2O mineral water or purified water?', answer: 'RIEAL H2O is premium packaged drinking water. It goes through a multi-stage advanced purification process that removes impurities while maintaining a clean, crisp taste profile.' },
+  { question: 'Does RIEAL H2O deliver to homes and offices?', answer: 'Yes! We offer delivery for all pack sizes. Reach out via our Contact page for home delivery schedules, office subscriptions, and bulk orders.' },
+  { question: 'How can I become a distributor?', answer: 'We welcome distribution partnerships. Please use the Contact page to share your details and our team will get back to you within 24 hours to discuss the opportunity.' },
+  { question: 'What makes RIEAL different from other water brands?', answer: 'RIEAL H2O is built on four pillars — natural sourcing, advanced purification, rigorous quality testing, and eco-friendly packaging. Every batch is independently tested before it reaches you.' },
 ];
 
 export default function About() {
@@ -103,8 +120,41 @@ export default function About() {
         </div>
       </section>
 
+      {/* ============================================================
+          BRAND JOURNEY TIMELINE
+          ============================================================ */}
+      <section className="timeline section section--tint">
+        <div className="container">
+          <Reveal>
+            <SectionHeading
+              align="center"
+              eyebrow="Our Journey"
+              title="From vision to every drop"
+              subtitle="The milestones that shaped RIEAL H2O into the brand it is today."
+            />
+          </Reveal>
+
+          <div className="timeline__track">
+            {milestones.map((m, i) => (
+              <Reveal key={i} delay={i * 120}>
+                <div className="timeline__item">
+                  <div className="timeline__dot">
+                    <span className="timeline__dot-inner" />
+                  </div>
+                  <div className="timeline__card">
+                    <span className="timeline__year">{m.year}</span>
+                    <h3 className="timeline__card-title">{m.title}</h3>
+                    <p className="timeline__card-text">{m.text}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
-      <section className="values section section--tint">
+      <section className="values section">
         <div className="container">
           <SectionHeading
             align="center"
@@ -120,6 +170,74 @@ export default function About() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          MISSION & VISION
+          ============================================================ */}
+      <section className="mission section section--tint">
+        <div className="container mission__grid">
+          <Reveal from="left">
+            <div className="mission__card mission__card--mission">
+              <div className="mission__icon-wrap">
+                <Target size={28} />
+              </div>
+              <h3>Our Mission</h3>
+              <p>
+                To deliver pure, safe and refreshing drinking water to every
+                household, office and community — because clean hydration is a
+                right, not a privilege. Every bottle we produce carries this
+                commitment forward.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal from="right">
+            <div className="mission__card mission__card--vision">
+              <div className="mission__icon-wrap">
+                <Award size={28} />
+              </div>
+              <h3>Our Vision</h3>
+              <p>
+                To be India's most trusted packaged drinking water brand —
+                recognised not for advertising, but for the consistent quality
+                people experience every time they choose RIEAL H2O.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="container mission__counters">
+          <Reveal delay={0}>
+            <AnimatedCounter end={50000} suffix="+" label="Bottles Served" />
+          </Reveal>
+          <Reveal delay={100}>
+            <AnimatedCounter end={4} label="Pack Sizes" />
+          </Reveal>
+          <Reveal delay={200}>
+            <AnimatedCounter end={100} suffix="%" label="Quality Tested" />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============================================================
+          ABOUT FAQ
+          ============================================================ */}
+      <section className="about-faq section">
+        <div className="container about-faq__grid">
+          <Reveal from="left" className="about-faq__intro">
+            <SectionHeading
+              eyebrow="Common Questions"
+              title="Everything you want to know"
+              subtitle="Have more questions? We'd love to hear from you — reach out via our Contact page."
+            />
+            <Button to="/contact" variant="outline">Ask Us Anything</Button>
+          </Reveal>
+
+          <Reveal from="right" className="about-faq__list">
+            <Accordion items={aboutFaq} />
+          </Reveal>
         </div>
       </section>
 

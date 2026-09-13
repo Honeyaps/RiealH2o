@@ -7,6 +7,9 @@ import FeatureCard from '../components/FeatureCard';
 import PillarCard from '../components/PillarCard';
 import ProductCard from '../components/ProductCard';
 import Reveal from '../components/Reveal';
+import AnimatedCounter from '../components/AnimatedCounter';
+import MarqueeTicker from '../components/MarqueeTicker';
+import WaterDrop from '../components/WaterDrop';
 
 import Bottle from '../assets/svg/Bottle';
 import WaterSplash from '../assets/svg/WaterSplash';
@@ -19,6 +22,89 @@ import { products } from '../data/products';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 import './Home.css';
+
+const waterFacts = [
+  'Your body is 60% water',
+  'Clean water boosts immunity',
+  'Hydration improves brain function by 14%',
+  'Water helps regulate body temperature',
+  '8 glasses a day keeps fatigue away',
+  'Proper hydration improves skin health',
+  'Water flushes out toxins naturally',
+  'Dehydration can cause headaches',
+];
+
+const bodyWater = [
+  { organ: 'Brain',   pct: 75, color: '#087FEF', desc: 'Keeps you focused, alert and mentally sharp.' },
+  { organ: 'Lungs',   pct: 83, color: '#0A5DC2', desc: 'Enables oxygen exchange with every breath.' },
+  { organ: 'Blood',   pct: 90, color: '#062B66', desc: 'Carries nutrients and oxygen to every cell.' },
+  { organ: 'Muscles', pct: 79, color: '#3A9EF5', desc: 'Powers movement, strength and recovery.' },
+  { organ: 'Skin',    pct: 64, color: '#6DB9F7', desc: 'Maintains natural elasticity and glow.' },
+  { organ: 'Heart',   pct: 73, color: '#1570D4', desc: 'Supports healthy circulation every second.' },
+];
+
+/* Animated circular-progress ring — fills on scroll, counts up the number */
+function HydrationRing({ organ, pct, color, desc, delay = 0 }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [count, setCount] = useState(0);
+  const r = 54;
+  const circ = 2 * Math.PI * r;
+  const offset = circ * (1 - pct / 100);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+    const tid = setTimeout(() => {
+      const dur = 1400;
+      const t0 = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - t0) / dur, 1);
+        setCount(Math.round((1 - Math.pow(1 - p, 3)) * pct));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, delay);
+    return () => clearTimeout(tid);
+  }, [visible, pct, delay]);
+
+  return (
+    <div className="hydra-ring" ref={ref}>
+      <div className="hydra-ring__wrap">
+        <svg className="hydra-ring__svg" viewBox="0 0 130 130">
+          <circle className="hydra-ring__track" cx="65" cy="65" r={r} />
+          <circle
+            className="hydra-ring__fill"
+            cx="65" cy="65" r={r}
+            style={{
+              stroke: color,
+              strokeDasharray: circ,
+              strokeDashoffset: visible ? offset : circ,
+              transitionDelay: `${delay}ms`,
+            }}
+          />
+        </svg>
+        <div className="hydra-ring__label">
+          <span className="hydra-ring__pct" style={{ color }}>
+            {count}<span className="hydra-ring__pct-sign">%</span>
+          </span>
+          <span className="hydra-ring__organ">{organ}</span>
+        </div>
+      </div>
+      <p className="hydra-ring__desc">{desc}</p>
+    </div>
+  );
+}
 
 export default function Home() {
   useDocumentTitle(
@@ -147,13 +233,13 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator
+        {/* Scroll indicator */}
         <div className="hero__scroll" aria-hidden="true">
           <span className="hero__scroll-track">
             <span className="hero__scroll-dot" />
           </span>
           <span className="hero__scroll-label">Scroll</span>
-        </div> */}
+        </div>
       </section>
 
       {/* ============================================================
@@ -167,6 +253,14 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* ============================================================
+          MARQUEE TICKER — Water Facts
+          ============================================================ */}
+      <section className="facts-ticker">
+        <MarqueeTicker items={waterFacts} speed={35} />
+        <MarqueeTicker items={waterFacts.slice().reverse()} speed={40} reverse />
       </section>
 
       {/* ============================================================
@@ -212,6 +306,37 @@ export default function Home() {
       </section>
 
       {/* ============================================================
+          IMPACT COUNTERS
+          ============================================================ */}
+      <section className="impact section">
+        <div className="container">
+          <Reveal>
+            <SectionHeading
+              align="center"
+              eyebrow="Our Impact"
+              title="Numbers that speak for themselves"
+              subtitle="Every bottle of RIEAL H2O is a step towards healthier hydration for communities across India."
+            />
+          </Reveal>
+
+          <div className="impact__grid">
+            <Reveal delay={0}>
+              <AnimatedCounter end={50000} suffix="+" label="Bottles Delivered" duration={2500} />
+            </Reveal>
+            <Reveal delay={100}>
+              <AnimatedCounter end={5} label="Purification Stages" duration={1500} />
+            </Reveal>
+            <Reveal delay={200}>
+              <AnimatedCounter end={100} suffix="%" label="Batch Tested" duration={2000} />
+            </Reveal>
+            <Reveal delay={300}>
+              <AnimatedCounter end={4} label="Pack Sizes Available" duration={1500} />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
           PURITY / PILLARS
           ============================================================ */}
       <section className="purity section section--tint">
@@ -247,6 +372,60 @@ export default function Home() {
             opacity="0.22"
           />
         </svg>
+      </section>
+
+      {/* ============================================================
+          INTERACTIVE RIPPLE — Experience Purity
+          ============================================================ */}
+      <section className="ripple-section section">
+        <div className="container ripple-section__grid">
+          <Reveal from="left" className="ripple-section__content">
+            <SectionHeading
+              eyebrow="Experience Purity"
+              title="Feel the freshness"
+              subtitle="Just like every drop of RIEAL H2O brings you closer to nature, every interaction brings you closer to purity."
+            />
+            <p className="ripple-section__text">
+              We believe hydration should be an experience — crisp, clean and
+              genuinely refreshing. From our natural sources to your glass,
+              every step is designed to preserve that original freshness.
+            </p>
+            <Button to="/our-water" variant="outline">Our Water Journey</Button>
+          </Reveal>
+
+          <Reveal from="right" className="ripple-section__interactive">
+            <WaterDrop />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============================================================
+          BODY WATER — Hydration Science Rings
+          ============================================================ */}
+      <section className="body-water section section--tint">
+        <div className="container">
+          <Reveal>
+            <SectionHeading
+              align="center"
+              eyebrow="Hydration Science"
+              title="Your body runs on water"
+              subtitle="Every organ in your body depends on water to function at its best."
+            />
+          </Reveal>
+
+          <Reveal>
+            <div className="body-water__hero">
+              <span className="body-water__hero-num">60%</span>
+              <span className="body-water__hero-label">of your body is water</span>
+            </div>
+          </Reveal>
+
+          <div className="body-water__grid">
+            {bodyWater.map((item, i) => (
+              <HydrationRing key={item.organ} {...item} delay={i * 150} />
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ============================================================

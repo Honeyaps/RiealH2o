@@ -1,9 +1,11 @@
-import { Check } from 'lucide-react';
+import { Check, Shield, Zap, ThumbsUp, RefreshCw, BadgeCheck, Star } from 'lucide-react';
 
 import Button from '../components/Button';
 import SectionHeading from '../components/SectionHeading';
 import PillarCard from '../components/PillarCard';
 import Reveal from '../components/Reveal';
+import AnimatedCounter from '../components/AnimatedCounter';
+import MarqueeTicker from '../components/MarqueeTicker';
 
 import Bottle from '../assets/svg/Bottle';
 
@@ -28,6 +30,21 @@ const reasons = [
     title: 'People-first, planet-aware',
     text: 'We think carefully about packaging, sourcing and the footprint we leave behind.',
   },
+];
+
+const brandPromises = [
+  { icon: Shield, title: 'Batch-Verified Purity', text: 'Every batch passes lab testing before packaging. No exceptions, no shortcuts.' },
+  { icon: Zap, title: 'Freshness Guaranteed', text: 'From our facility to your table in the shortest possible time — fresh water, always.' },
+  { icon: RefreshCw, title: 'Consistent Quality', text: 'The same clean, crisp taste every single time you open a RIEAL H2O bottle.' },
+  { icon: BadgeCheck, title: 'FSSAI Compliant', text: 'Our facility and products meet all FSSAI food safety and quality standards.' },
+  { icon: ThumbsUp, title: 'Customer Satisfaction', text: 'We put customers first — from responsive support to reliable delivery.' },
+  { icon: Star, title: 'Premium Experience', text: 'From packaging design to water quality — every detail is crafted for a premium experience.' },
+];
+
+const marqueeItems = [
+  'Natural Source', 'Advanced Purification', 'Batch Tested', 'BPA-Free Packaging',
+  'FSSAI Certified', 'Eco-Friendly', 'Trusted Quality', 'Fresh Always',
+  'Family Safe', 'Crisp Taste', 'Zero Chlorine', 'pH Balanced',
 ];
 
 export default function WhyReal() {
@@ -66,6 +83,74 @@ export default function WhyReal() {
         </div>
       </section>
 
+      {/* ============================================================
+          MARQUEE — Brand Keywords
+          ============================================================ */}
+      <section className="why-marquee">
+        <MarqueeTicker items={marqueeItems} speed={32} />
+      </section>
+
+      {/* ============================================================
+          BRAND PROMISES
+          ============================================================ */}
+      <section className="promises section section--tint">
+        <div className="container">
+          <Reveal>
+            <SectionHeading
+              align="center"
+              eyebrow="The RIEAL Promise"
+              title="What we commit to, every bottle"
+              subtitle="These aren't just claims — they're the standards we hold ourselves to, day after day."
+            />
+          </Reveal>
+
+          <div className="promises__grid">
+            {brandPromises.map((p, i) => (
+              <Reveal key={p.title} delay={i * 80}>
+                <div className="promises__card">
+                  <div className="promises__icon">
+                    <p.icon size={24} />
+                  </div>
+                  <h3 className="promises__card-title">{p.title}</h3>
+                  <p className="promises__card-text">{p.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          STAT COUNTERS
+          ============================================================ */}
+      <section className="why-stats section">
+        <div className="container">
+          <Reveal>
+            <SectionHeading
+              align="center"
+              eyebrow="By The Numbers"
+              title="Trust is measured, not claimed"
+              subtitle="These numbers reflect our commitment to purity and quality at every step."
+            />
+          </Reveal>
+
+          <div className="why-stats__grid">
+            <Reveal delay={0}>
+              <AnimatedCounter end={5} label="Purification Stages" duration={1500} />
+            </Reveal>
+            <Reveal delay={100}>
+              <AnimatedCounter end={100} suffix="%" label="Batch-Level Testing" duration={2000} />
+            </Reveal>
+            <Reveal delay={200}>
+              <AnimatedCounter end={0} label="Chlorine (ppm)" duration={1000} />
+            </Reveal>
+            <Reveal delay={300}>
+              <AnimatedCounter end={50000} suffix="+" label="Bottles Delivered" duration={2500} />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* Reasons split */}
       <section className="reasons section section--tint">
         <div className="container reasons__grid">
@@ -96,6 +181,33 @@ export default function WhyReal() {
           </Reveal>
         </div>
       </section>
+
+      {/* ============================================================
+          SATISFACTION GUARANTEE
+          ============================================================ */}
+      {/* <section className="guarantee section">
+        <div className="container guarantee__inner">
+          <Reveal>
+            <div className="guarantee__badge" aria-hidden="true">
+              <svg viewBox="0 0 120 120" className="guarantee__seal">
+                <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="6 4" />
+                <circle cx="60" cy="60" r="46" fill="rgba(255,255,255,0.08)" />
+              </svg>
+              <BadgeCheck size={40} className="guarantee__seal-icon" />
+            </div>
+            <h2 className="heading-display guarantee__title">Our Quality Guarantee</h2>
+            <p className="guarantee__text">
+              We stand behind every bottle of RIEAL H2O. If you ever find our water
+              quality below the standards we promise — consistent purity, balanced
+              pH, zero chlorine, fresh taste — reach out to us and we'll make it right.
+              That's not a policy; it's a principle.
+            </p>
+            <Button to="/contact" size="lg" className="guarantee__btn">
+              Contact Our Team
+            </Button>
+          </Reveal>
+        </div>
+      </section> */}
 
       {/* CTA */}
       <section className="section why-cta">

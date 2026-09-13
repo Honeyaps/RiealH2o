@@ -1,0 +1,38 @@
+.comp-bar {
+  margin-bottom: 20px;
+}
+
+.comp-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.comp-bar__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-navy);
+}
+
+.comp-bar__display {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-royal);
+}
+
+.comp-bar__track {
+  width: 100%;
+  height: 12px;
+  background: var(--color-blue-100);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.comp-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-royal);
+  transition: width 1.2s var(--ease-out);
+}
