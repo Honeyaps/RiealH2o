@@ -1,4 +1,4 @@
-import bottleImg from '../images/bottle.png';
+import bottleImg from '../images/bottol.png';
 
 /**
  * Small RIEAL H2O bottle used in the Products / Choose Your Pack cards.

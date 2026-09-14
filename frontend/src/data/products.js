@@ -1,8 +1,8 @@
 // Product photos — imported so Vite bundles/optimises them
-import img100ml from '../assets/images/100ml.png';
-import img1L    from '../assets/images/1l.png';
-import img2L    from '../assets/images/2l.png';
-import img20L   from '../assets/images/20l.png';
+import img250ml from '../assets/images/250ml.jpg';
+import img1L    from '../assets/images/1l.jpg';
+import img2L    from '../assets/images/2l.jpg';
+import img20L   from '../assets/images/20l.jpg';
 
 /**
  * Informational pack sizes. This is NOT an e-commerce catalog — no prices,
@@ -16,18 +16,18 @@ import img20L   from '../assets/images/20l.png';
  */
 export const products = [
   {
-    id: '100ml',
-    volume: '100 ml',
+    id: '250ml',
+    volume: '250 ml',
     tagline: 'Perfect for on-the-go',
     description: 'A crisp, single-serve bottle for events, travel and quick refreshment.',
-    image: img100ml,
+    image: img250ml,
   },
   {
     id: '1l',
     volume: '1 Litre',
     tagline: 'For everyday hydration',
     description: 'A generous serving that stays fresh from the first sip to the last.',
-    image: img1L,
+    image: img1L
   },
   {
     id: '2l',

@@ -1,4 +1,4 @@
-import bottleImg from '../images/bottle.png';
+import bottleImg from '../images/bottol.png';
 
 /**
  * RIEAL H2O product bottle (real product photograph).
